@@ -1,0 +1,22 @@
+{
+  "name": "serial-test",
+  "version": "1.0.0",
+  "description": "A test for serial port communication through electron.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "author": "mekiah343",
+  "license": "ISC",
+  "dependencies": {
+    "electron-reload": "^1.4.0",
+    "gamecontroller": "0.0.2",
+    "net": "^1.0.2",
+    "serialport": "^7.1.4"
+  },
+  "devDependencies": {
+    "electron": "^4.1.4",
+    "electron-builder": "^20.39.0"
+  }
+}

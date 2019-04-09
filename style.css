@@ -1,0 +1,113 @@
+/* Initialize my font */
+@font-face {
+    font-family: "consolas";
+    src: url("consolas/Consola.ttf");
+}
+
+/* The body had some padding by defualt for some
+reason, but this takes care of that */
+body, html {
+    margin: 0px;
+    padding: 0px;
+}
+
+/* Setting the bodys color */
+body {
+    background-color:#040423d8
+}
+
+/* Draggable region of the toolbar */
+.draggable{
+    -webkit-app-region: drag;
+    background-color: rgb(96, 23, 95);
+    overflow: hidden;
+    padding: 10.5px 0px;
+}
+
+/* Without this some of the back background shows
+when the navigaion buttons grow */
+.purpleArea{
+    background-color: rgb(96, 23, 95);
+}
+
+/* Draggable "pink" region of the toolbar */
+.draggablePink{
+    -webkit-app-region: drag;
+    background-color: #993553;
+    overflow: hidden;
+    padding: 5px 0px;
+}
+
+
+/* Close button */
+#close {
+    width: 13px;
+    float: right;
+    padding: 4px 4px;
+    cursor: pointer;
+    background-color: rgb(96, 23, 95);
+    transition: 0.15s;
+}
+
+/* Close button on hover */
+#close:hover {
+    background-color: rgb(201, 50, 50);
+    transition: 0.3s;
+    padding: 6px 6px;
+    width: 16px;
+
+}
+
+/* Minimize button */
+#min {
+    width: 13px;
+    float: right;
+    padding: 10px 4px;
+    cursor: pointer;
+    background-color: rgb(96, 23, 95);
+    transition: 0.15s;
+}
+
+#min:hover {
+    background-color: #2d75c7;
+    fill: white;
+    transition: 0.3s;
+    padding: 12px 6px;
+}
+
+
+/* All navigation buttons */
+.navbtn {
+font-family: 'consolas', "sans-serif";
+padding: 0px 0px;
+user-select: none;
+}
+
+/* Navigation button styling */
+.navbtn a {
+    background-color: rgb(96, 23, 95);
+    float: left;
+    color: #D8B06A;
+    text-align: center;
+    padding: 3.5px 4px;
+    text-decoration: none;
+    font-size: 12px;
+    opacity: 1;
+    transition: 0.15s;
+}
+
+/* Navigation button on hover */
+.navbtn a:hover {
+    font-size: 14px;
+    padding: 7px 7px;
+    background-color: #ddd;
+    color: black;
+    opacity: 0.5;
+    transition: 0.3s;
+}
+
+/* Current navigation tab */
+.navbtn a.activeBtn {
+    background-color: #993553;
+    color: #D6D1B1
+}

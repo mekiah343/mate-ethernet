@@ -6,13 +6,9 @@
 
 /* The body had some padding by defualt for some
 reason, but this takes care of that */
-body, html {
+body {
     margin: 0px;
     padding: 0px;
-}
-
-/* Setting the bodys color */
-body {
     background-color:#040423d8
 }
 
@@ -28,6 +24,9 @@ body {
 when the navigaion buttons grow */
 .purpleArea{
     background-color: rgb(96, 23, 95);
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
 }
 
 /* Draggable "pink" region of the toolbar */
@@ -53,8 +52,8 @@ when the navigaion buttons grow */
 #close:hover {
     background-color: rgb(201, 50, 50);
     transition: 0.3s;
-    padding: 6px 6px;
-    width: 16px;
+    /* padding: 6px 6px; */
+    /* width: 16px; */
 
 }
 
@@ -68,11 +67,12 @@ when the navigaion buttons grow */
     transition: 0.15s;
 }
 
+
 #min:hover {
     background-color: #2d75c7;
     fill: white;
     transition: 0.3s;
-    padding: 12px 6px;
+    /* padding: 12px 6px; */
 }
 
 
@@ -99,11 +99,22 @@ user-select: none;
 /* Navigation button on hover */
 .navbtn a:hover {
     font-size: 14px;
-    padding: 7px 7px;
+    padding: 7.5px 7px;
     background-color: #ddd;
     color: black;
     opacity: 0.5;
     transition: 0.3s;
+    
+}
+
+/* Makes it so that the pink on the
+active button grows with the bar */
+.navbtn:hover a.activeBtn, #min:hover a.activeBtn {
+    padding: 8px 7px;
+    background-color: #993553;
+    vertical-align: text-top;
+    
+    
 }
 
 /* Current navigation tab */

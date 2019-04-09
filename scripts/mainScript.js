@@ -23,7 +23,7 @@ function minimize() {
 
 
 function update() {
-	updateButtonList();
+	//updateButtonList();
 }
 
 var controllerConnected = false;
@@ -33,44 +33,35 @@ window.addEventListener("gamepadconnected", function(e) {
 	var buttons = e.gamepad.buttons.length;
 	var axes = e.gamepad.axes.length;
 	var msg = new SpeechSynthesisUtterance('Commander, ' + id + ' has been connected at index ' + index + ',containing' + buttons + ' buttons and ' + axes + ' axes.');
-	window.speechSynthesis.speak(msg);
+	//window.speechSynthesis.speak(msg);
 	controllerConnected = true;
+
+	if (index == 0){
+		initializeGP(e);
+	}
 });
 
 // initialize gamepad
-function updateButtonList() {
-
-
-	var gamepads = navigator.getGamepads();
-	if (!gamepads[0]) return;
+function initializeGP(gamepad) {
+	//Things for initializing buttons
 
 	// Create the list element:
 	var list = document.getElementById("controllerBtns");
 	list.innerHTML = '';
-	for (var i = 0; i < gamepads[0].buttons.length; i++) {
+	// Create a list item for each button
+	for (var i = 0; i < gamepad.buttons.length; i++) {
 		// Create the list item:
 		var item = document.createElement('li');
 		var BtnVal = "true"
-
-
-		// Set its contents:
-		if (gamepads[0].buttons[i].pressed){
-			var BtnVal = "true"
-		}
-		else {
-			var BtnVal = "false"
-		}
-
-		item.appendChild(document.createTextNode(BtnVal));
-
+		// Set li text
+		item.appendChild(document.createTextNode(" "));
 		// Add it to the list:
 		list.appendChild(item);
 	}
-
-
-
 }
 
+
+/* not the most effective way of switching states but ehh, it works for now */
 
 document.getElementById("input").style.display = "block"
 document.getElementById("sensors").style.display = "none"
@@ -80,16 +71,23 @@ document.getElementById("console").style.display = "none"
 document.getElementById("inputBtn").onclick = function(){
 	document.getElementsByClassName("activeBtn")[0].classList.remove('activeBtn');
 	this.classList.add('activeBtn');
+	document.getElementById("input").style.display = "block"
+	document.getElementById("sensors").style.display = "none"
+	document.getElementById("console").style.display = "none"
 }
 
 document.getElementById("sensorsBtn").onclick = function(){
 	document.getElementsByClassName("activeBtn")[0].classList.remove('activeBtn');
 	this.classList.add('activeBtn');
+	document.getElementById("input").style.display = "none"
+	document.getElementById("sensors").style.display = "block"
+	document.getElementById("console").style.display = "none"
 }
 
 document.getElementById("consoleBtn").onclick = function(){
 	document.getElementsByClassName("activeBtn")[0].classList.remove('activeBtn');
 	this.classList.add('activeBtn');
+	document.getElementById("input").style.display = "none"
+	document.getElementById("sensors").style.display = "none"
+	document.getElementById("console").style.display = "block"
 }
-
-document.getElementById("controllerBtns")

@@ -9,7 +9,9 @@ reason, but this takes care of that */
 body {
     margin: 0px;
     padding: 0px;
-    background-color:#040423d8
+    background-color:#040423d8;
+    font-family: 'consolas', "sans-serif";
+    color: #D8B06A;
 }
 
 /* Draggable region of the toolbar */
@@ -27,6 +29,7 @@ when the navigaion buttons grow */
     position: fixed; /* Set the navbar to fixed position */
     top: 0; /* Position the navbar at the top of the page */
     width: 100%; /* Full width */
+    user-select: none;
 }
 
 /* Draggable "pink" region of the toolbar */
@@ -80,7 +83,6 @@ when the navigaion buttons grow */
 .navbtn {
 font-family: 'consolas', "sans-serif";
 padding: 0px 0px;
-user-select: none;
 }
 
 /* Navigation button styling */
@@ -121,4 +123,10 @@ active button grows with the bar */
 .navbtn a.activeBtn {
     background-color: #993553;
     color: #D6D1B1
+}
+
+.inputList {
+    padding: 0px 10px;
+    font-size: 15px;
+    list-style-type: none;
 }

@@ -1,4 +1,4 @@
-var buttons = {};
+var buttons = [];
 var axes = [];
 
 window.addEventListener("gamepadconnected", function(e) {
@@ -58,12 +58,13 @@ function updateGpAxes(gamepad){
 }
 
 function updateGpButtons(gamepad){
+	buttons = gamepad.buttons;
 	if (!gamepad) {return}
 	for (i = 0;i < gamepad.buttons.length; i++) {
 		// If its true then change the text to say "true" and vise versa
-		if (gamepad.buttons[i].pressed){ var BtnVal = "true" }	
-		else { var BtnVal = "false" }	
+		if (gamepad.buttons[i].pressed){ var BtnVal = "0" }	
+		else { var BtnVal = " 1" }	
 		// Apply changes
-		document.getElementById("b"+i).innerHTML = i + ": " + BtnVal;
+		document.getElementById("b"+i).innerHTML = "b" + i + ":" + BtnVal;
 	}
 }

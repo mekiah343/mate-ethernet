@@ -12,6 +12,7 @@ body {
     background-color:#040423d8;
     font-family: 'consolas', "sans-serif";
     color: #D8B06A;
+    overflow: auto;
 }
 
 /* Draggable region of the toolbar */
@@ -126,7 +127,27 @@ active button grows with the bar */
 }
 
 .inputList {
-    padding: 0px 10px;
+    padding: 0px 0px 0px 10px;
     font-size: 15px;
     list-style-type: none;
+}
+
+#controllerBtns {
+    list-style-type: none;
+    margin: 0;
+    padding:45px 45px 10px 10px;
+    overflow: hidden;
+} 
+
+
+#controllerBtns li {
+    left: 50%;
+    margin:0 5px 5px 0;
+    font-size: 13px;
+    width: 10px;
+    height: 10px;
+    display:inline-block;
+    text-align: center;
+    padding: 25px 25px;
+    background-color: rgb(96, 23, 95);
 }

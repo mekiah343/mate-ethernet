@@ -10,29 +10,33 @@
 
 
 class motor {
-  byte pin;
-  int pw = 1500;
+
 public:
-  motor(int _pin) { pin = _pin; }
-  void addServo();
+  // Values set when object created
+  // Can also pass values
+  // Ex: motor(int _pin) { s.attach(_pin); }
+  //motor() {} // Default values
+  //~motor() {} //  destructor, it destroys the instance, frees up memory, etc. etc.
+   
+   void init(int _pin){
+     s.attach(_pin);
+     s.writeMicroseconds(1500);
+   }
+   void setPw(int _pw){
+     s.writeMicroseconds(_pw);
+   }
+  
+ private:
+  int pin;
+  Servo s;
 };
 
-//Create Servos
-Servo s1;
-Servo s2;
-Servo s3;
-Servo s4;
-Servo s5;
-Servo s6;
+const int motorAmt = 6; // amount of motors I'll have
+int pins[motorAmt] = {3,5,6,9,10,11}; // motor mins
+motor * m[motorAmt]; // motor object
+int i; // index...
+motor * mP; // motor object pointer
 
-//Servo* s = {"s1"};
-
-motor m1 (1);
-motor m2 (2);
-motor m3 (3);
-motor m4 (4);
-motor m5 (5);
-motor m6 (6);
 
 
 // Set values below to match your network needs:
@@ -45,16 +49,15 @@ EthernetClient client;                               // Define client
 
 String inString = "";
 
-
 void setup()
 {
-  s1.attach(m1.pin);
-  s2.attach(m2.pin);
-  s3.attach(m3.pin);
-  s4.attach(m4.pin);
-  s5.attach(m5.pin);
-  s6.attach(m6.pin);
-  
+  for (i = 0; i < motorAmt; i++){
+    mP = new motor;
+    mP->init(pins[i]);
+    m[i] = mP;
+  }
+  delay(1000);
+
 
   Ethernet.begin(mac, ip);          // (mac, ip, gateway, subnet); Start the Ethernet connection
   server.begin();                                    // Begin acting like a server
@@ -62,6 +65,8 @@ void setup()
 
 void loop()
 {
+
+ m[0]->setPw(2000);
   char inByte;                  // Set up a character buffer to grab the input
 
   client = server.available();  // Check for server availability
@@ -70,23 +75,18 @@ void loop()
     inByte = client.read();     // Read the character in the buffer
     if (inByte == ' ')
     {
-      //client.print("Recieved");
-      inString = "";
+      client.print(inString);
+      int mNum = inString.charAt(0); // Fetch which motor to move then move it
+      inString.remove(0,1); // Fetch pulse width
+      int mPw = inString.toInt();
+      m[mNum]->setPw(mPw);
       
+      inString = "";
     }
     else
     {
       inString = inString + inByte;
     }
   }
-
-
-
-
-  s1.writeMicroseconds(m1.pw);
-  s2.writeMicroseconds(m2.pw);
-  s3.writeMicroseconds(m3.pw);
-  s4.writeMicroseconds(m4.pw);
-  s5.writeMicroseconds(m5.pw);
-  s6.writeMicroseconds(m5.pw);
+  delay(10);
 }

@@ -1,5 +1,12 @@
 var buttons = [];
 var axes = [];
+var maxForce = 1;
+
+function interperateAxis(){
+	for (i in axes){
+		
+	}
+}
 
 window.addEventListener("gamepadconnected", function(e) {
 	var index = e.gamepad.index;

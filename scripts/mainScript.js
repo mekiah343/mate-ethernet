@@ -3,7 +3,7 @@
 function logEvery2Seconds(i) {
 	setTimeout(() => {
 		logEvery2Seconds(++i);
-	}, 500)
+	}, 50)
 }
 
 logEvery2Seconds(0);
@@ -11,7 +11,7 @@ logEvery2Seconds(0);
 let i = 0;
 setInterval(() => {
 	update();
-}, 500)
+}, 50)
 // ---
 
 function minimize() {
@@ -23,11 +23,16 @@ window.onclick = function() {
 	console.log(navigator.getGamepads());
 }
 
+
 function update() {
 	var gamepad = navigator.getGamepads()[0];
-	updateGpButtons(gamepad);
-	updateGpAxes(gamepad);
+	if (gamepad) {
+		updateGpButtons(gamepad);
+		updateGpAxes(gamepad);
+		assemblePacket();
+	}
 
-	client.write('Hello, server! Love, Client.');
+
+	//client.write('Hello, server! Love, Client.');
 
 }

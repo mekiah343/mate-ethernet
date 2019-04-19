@@ -2,10 +2,20 @@ var buttons = [];
 var axes = [];
 var maxForce = 1;
 
-function interperateAxis(){
-	for (i in axes){
-		
-	}
+var joystick = {
+	x : 0,
+	y : 0
+}
+
+function interperateAxis() {
+	lStick = joystick;
+	lStick.x = axis[0];
+	lStick.y = axis[1];
+	
+	rStick = joystick;
+	rStick.x = axis[2];
+	rStick.y = axis[3];
+	console.log(rStick.x)
 }
 
 window.addEventListener("gamepadconnected", function(e) {
@@ -58,10 +68,13 @@ function initializeGp() {
 }
 
 function updateGpAxes(gamepad){
+	axis = gamepad.axes;
 	if (!gamepad) {return}
 	for (i = 0;i < gamepad.axes.length; i++) {
 		document.getElementById("a"+i).innerHTML = i + ": " + gamepad.axes[i];
 	}
+	
+	interperateAxis();
 }
 
 function updateGpButtons(gamepad){
